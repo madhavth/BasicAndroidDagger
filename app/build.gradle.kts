@@ -56,4 +56,36 @@ dependencies {
     implementation(libs.dagger.test)
     kapt(libs.dagger.compiler)
     kapt(libs.dagger.processor)
+
+    // retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.logging.interceptor)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.urlconnection)
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+
+    // lifecycle scopes and services
+    kapt(libs.androidx.lifecycle.compiler)
+
+    // lifecycle viewmodel ktx
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    implementation(libs.androidx.lifecycle.viewmodel)
+
+    implementation(libs.androidx.lifecycle.service)
+
+    // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+    implementation(libs.androidx.lifecycle.process)
+
+    // optional - Test helpers for LiveData
+    testImplementation(libs.androidx.core.testing)
+
+    // optional - Test helpers for Lifecycle runtime
+    testImplementation(libs.androidx.lifecycle.runtime.testing)
+
 }
