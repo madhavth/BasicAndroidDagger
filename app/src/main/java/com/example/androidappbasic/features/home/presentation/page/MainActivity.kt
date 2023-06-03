@@ -1,4 +1,4 @@
-package com.example.androidappbasic
+package com.example.androidappbasic.features.home.presentation.page
 
 import android.os.Bundle
 import com.example.androidappbasic.databinding.ActivityMainBinding
