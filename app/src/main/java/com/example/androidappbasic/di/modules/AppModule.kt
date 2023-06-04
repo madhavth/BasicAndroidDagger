@@ -16,14 +16,14 @@ object AppModule {
 
     @Provides
     fun provideRetrofit(baseUrl: String, moshi: Moshi): Retrofit = Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .addConverterFactory(
-            MoshiConverterFactory.create(moshi)
-        )
-        .build()
+            .baseUrl(baseUrl)
+            .addConverterFactory(
+                    MoshiConverterFactory.create(moshi)
+            )
+            .build()
 
     @Provides
     fun provideMoshi(): Moshi = Moshi.Builder()
-        .add(KotlinJsonAdapterFactory())
-        .build()
+            .add(KotlinJsonAdapterFactory())
+            .build()
 }
