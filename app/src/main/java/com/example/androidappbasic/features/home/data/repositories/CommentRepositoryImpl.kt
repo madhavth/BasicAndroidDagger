@@ -9,5 +9,5 @@ import javax.inject.Inject
 class CommentRepositoryImpl @Inject constructor(
     private val commentDataSource: CommentDataSource
 ) : CommentRepository {
-    override suspend fun loadComments() = commentDataSource.getComments()
+    override suspend fun getComments() = commentDataSource.getComments()
 }

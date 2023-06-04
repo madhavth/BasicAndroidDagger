@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetCommentsUseCase @Inject constructor(
     private val commentRepository: CommentRepository
 ) {
-    suspend fun execute(): List<MyComment> = commentRepository.loadComments().map {
+    suspend fun execute(): List<MyComment> = commentRepository.getComments().map {
         it.toEntity()
     }
 }

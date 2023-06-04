@@ -16,7 +16,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.androidappbasic.features.core.CustomTestRunner"
     }
 
     buildTypes {
@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
+    implementation(libs.androidx.runner)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -56,6 +57,7 @@ dependencies {
     implementation(libs.dagger.test)
     kapt(libs.dagger.compiler)
     kapt(libs.dagger.processor)
+    kaptTest(libs.dagger.processor)
 
     // retrofit
     implementation(libs.retrofit)
@@ -90,4 +92,12 @@ dependencies {
 
     // activity lifecycle scope
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+
+    // test
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.android)
+    testImplementation( libs.kotlinx.coroutines.test)
+    kaptTest (libs.dagger.test)
+    kaptAndroidTest( libs.dagger.android.testing)
 }

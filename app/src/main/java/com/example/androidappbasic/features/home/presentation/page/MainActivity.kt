@@ -70,7 +70,6 @@ class MainActivity : DaggerActivity() {
                     }
 
                     is CommentListState.Loading -> {
-
                     }
                 }
 
