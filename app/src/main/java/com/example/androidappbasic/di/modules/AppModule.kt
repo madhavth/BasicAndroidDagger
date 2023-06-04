@@ -15,9 +15,11 @@ object AppModule {
     fun provideBaseUrl(): String = "https://jsonplaceholder.typicode.com/"
 
     @Provides
-    fun provideRetrofit(baseUrl: String): Retrofit = Retrofit.Builder()
+    fun provideRetrofit(baseUrl: String, moshi: Moshi): Retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
-        .addConverterFactory(MoshiConverterFactory.create())
+        .addConverterFactory(
+            MoshiConverterFactory.create(moshi)
+        )
         .build()
 
     @Provides

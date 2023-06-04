@@ -88,4 +88,6 @@ dependencies {
     // optional - Test helpers for Lifecycle runtime
     testImplementation(libs.androidx.lifecycle.runtime.testing)
 
+    // activity lifecycle scope
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 }

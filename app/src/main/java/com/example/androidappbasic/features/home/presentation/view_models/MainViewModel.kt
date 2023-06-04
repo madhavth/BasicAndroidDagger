@@ -47,6 +47,7 @@ class MainViewModel @AssistedInject constructor(
                 _comments.value = CommentListState.Success(commentsList)
             } catch (e: Exception) {
                 if (e is CancellationException) throw e
+                e.printStackTrace()
                 _comments.value = CommentListState.Error(e.toString())
             }
         }
