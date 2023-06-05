@@ -1,52 +1,52 @@
 package com.example.androidappbasic.features.test.presentation.page
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.androidappbasic.features.test.presentation.page.ui.theme.AndroidAppBasicTheme
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
+import com.example.androidappbasic.databinding.ActivityTest2Binding
+import com.example.androidappbasic.features.test.domain.entities.Data
+import com.example.androidappbasic.features.test.domain.entities.GetNewData
+import com.example.androidappbasic.features.test.domain.entities.GetDataLazy
+import com.example.androidappbasic.features.test.presentation.view_models.TestViewModel
 import dagger.android.DaggerActivity
-import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
-class TestActivity : ComponentActivity() {
+class TestActivity : DaggerActivity() {
+    private var _binding: ActivityTest2Binding? = null
+
+    private val binding get() = _binding!!
+
+    @Inject
+    lateinit var testViewModel: TestViewModel
+
+    @Inject
+    lateinit var getListData: GetNewData
+
+    @Inject
+    lateinit var getListDataLazy: GetDataLazy
+
+    @Inject
+    lateinit var dataSet: Set<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AndroidInjection.inject(this)
-        setContent {
-            AndroidAppBasicTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+        _binding = ActivityTest2Binding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.tvProvider.text = getListData.getData()
+        binding.btnProvider.setOnClickListener {
+            binding.tvProvider.text = getListData.getData()
         }
+
+        binding.tvLazy.text = getListDataLazy.getData()
+        binding.btnLazy.setOnClickListener {
+            binding.tvLazy.text = getListDataLazy.getData()
+        }
+
+        binding.tvLazy.text = dataSet.toString()
+
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AndroidAppBasicTheme {
-        Greeting("Android")
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

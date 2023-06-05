@@ -1,6 +1,7 @@
 package com.example.androidappbasic.di.modules
 
 import com.example.androidappbasic.features.home.presentation.page.MainActivity
+import com.example.androidappbasic.features.test.data.di.TestModule
 import com.example.androidappbasic.features.test.presentation.page.TestActivity
 import dagger.Module
 import dagger.android.AndroidInjectionModule
@@ -12,6 +13,6 @@ abstract class ActivityModule {
     @ContributesAndroidInjector
     abstract fun contributeMainActivity(): MainActivity
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules= [TestModule::class])
     abstract fun contributesTestActivity(): TestActivity
 }
